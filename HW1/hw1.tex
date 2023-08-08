@@ -1,0 +1,57 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{UM201: Homework 1}
+\author{Sirjan Hansda, SR No- 22188}
+
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\textcolor{red}{Problem 1.} A fair coin is tossed $n$ times. Show that the probability that there is exactly one run of heads and two runs of tails is $\frac{(n-1)(n-2)}{2^{n+1}}$.  [Note: A run is a consecutive sequence of tosses givingthe same result. For example, 001101000 has three runs of tails and two runs of heads] \\
+
+
+\textcolor{blue}{Answer.} For calculating this probability, we take the probability space as: \\
+
+$\Omega=\{(x_1,x_2,x_3 \dots , x_n) | x_i \in \{0,1\}, \: \forall \: i\}$ \\
+
+And, we take the event \textbf A as : \\
+
+$A= B_1 \cup B_2 \cup B_3 \cup B_4 \dots B_{n-2} $ , where $B_i=\{(x_1,x_2,x_3 \dots , x_n) | x_j=1 \: \forall j;  m \leq j\leq k\}$
+\\ and ,\: $2\leq m$ and $k\leq n-1$ , and $m-k+1=i$
+\\
+\newline
+Clearly, $\mathbf{\# \Omega=2^n} $. This is because, have n coins and each can have 2 possible outcomes.
+\\
+Now, for $B_i$ , m can take any values from $2$ to $n-i$. Thus, $\# B_i=n-i-1 $.
+\\
+Thus, $\# B_1=n-2$ ; $\# B_2=n-3$ ; $\# B_3=n-4$ ; \dots ; $\# B_{n-2} = 1$
+\\
+\\
+Therefore, $B_i$'s being disjoint sets, $\#A=\sum_{i=1}^{n-2}i=\frac{(n-2)(n-1)}{2}$ 
+\\
+Thus,
+\begin{center}
+      $P(A)=\frac{\# A}{\# \Omega}=\frac{(n-2)(n-1)}{2^{n+1}}$
+\end{center}
+Hence Proved
+
+
+
+\end{document}
