@@ -10,9 +10,11 @@
 
 % Useful packages
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
-
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}%
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
 \title{UM201: Homework 1}
 \author{Sirjan Hansda, SR No- 22188}
 
@@ -24,7 +26,7 @@
 \maketitle
 
 
-\textcolor{red}{Problem 1.} A fair coin is tossed $n$ times. Show that the probability that there is exactly one run of heads and two runs of tails is $\frac{(n-1)(n-2)}{2^{n+1}}$.  [Note: A run is a consecutive sequence of tosses givingthe same result. For example, 001101000 has three runs of tails and two runs of heads] \\
+\textcolor{red}{Problem 1. A fair coin is tossed $n$ times. Show that the probability that there is exactly one run of heads and two runs of tails is $\frac{(n-1)(n-2)}{2^{n+1}}$.  [Note: A run is a consecutive sequence of tosses givingthe same result. For example, 001101000 has three runs of tails and two runs of heads]} \\
 
 
 \textcolor{blue}{Answer.} For calculating this probability, we take the probability space as: \\
@@ -51,7 +53,46 @@ Thus,
       $P(A)=\frac{\# A}{\# \Omega}=\frac{(n-2)(n-1)}{2^{n+1}}$
 \end{center}
 Hence Proved
-
-
-
+\\
+\\
+\textcolor{red}{Problem 2. A well-shuffled deck of cards is dealt among four players (so 13 cards each).  What isthe chance that no player has two cards of the same kind (i.e., two aces or two ones, or two queens,etc). Find an exact answer, and also give an approximate numerical value.}
+\\
+\\
+\textcolor{blue}{Answer.} For this problem, let us take the probability space to be:
+\\
+\\
+Let us assume the Pack of cards to be the set $S_{52}$.\\
+$\Omega =\{(X_1,X_2,X_3,X_4)| X_1 \cup X_2 \cup X_3 \cup X_4 = S_{52}, |X_1|=|X_2|=|X_3|=|X_4|=13 \}$
+\\
+\\
+Also, we take the event \textbf{A} as:
+\\
+$A=\{(X_1^{'},X_2^{'},X_3^{'},X_4^{'})|X_1^{'}\cup X_2^{'}\cup X_3^{'}\cup X_4=S_{52}^{'}, |X_1^{'}|=|X_2^{'}|=|X_3^{'}|=|X_4^{'}|=13 \; and$  \; if $x \in X_j^{'}, \; then, \nexists \; y\in X_i^{'},\; s.t,\; type(x)= type(y) \; ,\forall i\}$
+\\
+\\
+Now, $\#X_1=\Comb{52}{13} $, now 39 are left for the 2nd person. So, $\#X_2=\Comb{39}{13}$, now, 26 are left for the 3rd person to choose from. $\#X_3=\Comb{26}{13}$ . And so on.
+\\
+Thus, total ways to distribute 52 cards to 4 people such that, each of them get 13 cards each, is :
+\\
+\\
+$\# \Omega=\Comb{52}{13} * \Comb{39}{13} * \Comb{26}{13} * \Comb{13}{13} = \frac{52!}{13! * 13! * 13! * 13!}$
+\\
+\\
+Now, for the given event, we can divide the cards in the pack as follows: \\
+There are 13 types of cards.These types are: \textbf{king, queen, jack, ace, 2, 3, 4, 5, 6, 7, 8, 9 }.
+Each of these types of cards are again 4 in number. Each of these 4 cards of the same type belong to one of the subtype: \textbf{hearts, diamonds, spade, clubs}.\\
+\\
+Now suppose the 1st person comes to take his cards of type king: he will have choice to choose a king card from one of the 4 sybtypes. He will then get 4 choices for each of the 13 types of cards.
+Thus, his choice of cards is: $\mathbf{4^{13}}$.
+\\
+Now, when the second person comes he has 3 choices in the subtype for each of the 13 types of cards(Since, the 1st person has already taken 1 card of each type). So, he will have $\mathbf{3^{13}}$ total choices in total choices.\\
+Similarly, the third and the fourth persons have $\mathbf{2^{13}}$ and $\mathbf{1^{13}}$ choices respectively.
+Thus, the total number of choices faced by all of the 4 persons combined is: $\mathbf{(4!)^{13}}$.
+Thus,
+\begin{center}
+      $P(A)=\frac{\# A}{\# \Omega}=\frac{(4!)^{13}}{\frac{52!}{13! * 13! * 13! * 13!}}$
+      \\
+      $\approx 1.6338*10^{-11}$
+\end{center}
+This is the answer.
 \end{document}
